@@ -1,26 +1,27 @@
-class BankAccount:
-    def __init__(self,account_number,account_holder_name,initial_balance=0.0):
-        self.__account_number=account_number
-        self.__account_holder_name=account_holder_name
-        self.__account_balance=initial_balance
-    def deposit (self,amount):
-        if amount>0:
-            self.__account_balance+=amount
-            print ("Deposited rs{}.New balance:rs {}".format (amount,self.__account_balance))
-        else:
-            print ("Invalid deposit amount. Please deposit a positive amount.")
-    def withdraw(self,amount):
-        if amount>0 and amount <= self.__account_balance:
-            self.__account_balance -= amount
-            print ("Withdraw rs {}.New balance: rs {}".format (amount,self.__account_balance))
-        else:
-            print ("Invalid withdrawal amount or insufficient balance.")
-    def display_balance (self):
-        print ("Account balance for {} (Account #{}): rs{}".format (
-            self.__account_holder_name,self.__account_number,
-            self.__account_balance))
-account=BankAccount (account_number="809245679",account_holder_name="Peter",initial_balance=5000.0)
-account.display_balance ()
-account.deposit (500.0)
-account.withdraw (200.0)
-account.display_balance ()
+class Student:
+    def __init__(self, name, roll_number, cgpa):
+        self.name = name
+        self.roll_number = roll_number
+        self.cgpa = cgpa
+
+def sort_students(student_list):
+    # Sort the student_list in descending order of CGPA
+    sorted_students = sorted(student_list, key=lambda x: x.cgpa, reverse=True)
+    return sorted_students
+
+# Test the function with different input lists of students
+if __name__ == "__main__":
+    # Creating a list of student objects
+    students = [
+        Student("Alice", "A001", 3.9),
+        Student("Bob", "B002", 3.7),
+        Student("Charlie", "C003", 3.8),
+        Student("David", "D004", 3.5),
+    ]
+
+    # Sorting the list based on CGPA
+    sorted_students = sort_students(students)
+
+    # Printing the sorted list
+    for student in sorted_students:
+        print(f"Name: {student.name}, Roll Number: {student.roll_number}, CGPA: {student.cgpa}")
